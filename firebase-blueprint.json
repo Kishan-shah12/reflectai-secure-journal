@@ -1,0 +1,48 @@
+{
+  "$schema": "https://firebase.google.com/docs/firestore/blueprint-schema.json",
+  "entities": {
+    "User": {
+      "collection": "users",
+      "path": "users/{uid}",
+      "description": "Minimal user profile with metadata",
+      "fields": {
+        "uid": { "type": "string", "description": "Canonical Firebase Auth UID" },
+        "displayName": { "type": "string", "description": "User display name from Google Sign-In" },
+        "photoURL": { "type": "string", "description": "User avatar URL" },
+        "createdAt": { "type": "timestamp", "description": "Account initialization timestamp" },
+        "lastActiveAt": { "type": "timestamp", "description": "Last activity timestamp" }
+      },
+      "subcollections": {
+        "journals": {
+          "collection": "journals",
+          "path": "users/{uid}/journals/{journalId}",
+          "description": "User-owned journal reflection sessions",
+          "fields": {
+            "id": { "type": "string", "description": "Unique session identifier" },
+            "userId": { "type": "string", "description": "Owner UID matching path" },
+            "title": { "type": "string", "description": "Title or topic of the session" },
+            "initialPrompt": { "type": "string", "description": "Initial user prompt or reflection topic" },
+            "latestResponse": { "type": "string", "description": "Latest Gemini response" },
+            "category": { "type": "string", "description": "Journal category" },
+            "createdAt": { "type": "timestamp", "description": "Session creation timestamp" },
+            "updatedAt": { "type": "timestamp", "description": "Session update timestamp" }
+          },
+          "subcollections": {
+            "messages": {
+              "collection": "messages",
+              "path": "users/{uid}/journals/{journalId}/messages/{messageId}",
+              "description": "Multi-turn conversation messages between user and Gemini",
+              "fields": {
+                "id": { "type": "string", "description": "Message identifier" },
+                "role": { "type": "string", "description": "user or model" },
+                "content": { "type": "string", "description": "Message text content" },
+                "timestamp": { "type": "number", "description": "Epoch timestamp" },
+                "createdAt": { "type": "timestamp", "description": "Message creation timestamp" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

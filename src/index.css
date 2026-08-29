@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Instrument Serif', Georgia, Cambria, 'Times New Roman', serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Theme Tokens */
+    --color-bg-canvas: #FAF8F5;
+    --color-bg-surface: #FFFFFF;
+    --color-bg-elevated: #F4F1EA;
+    --color-bg-muted: #EFECE4;
+
+    --color-text-primary: #1C1917;
+    --color-text-secondary: #57534E;
+    --color-text-muted: #78716C;
+
+    --color-border-subtle: rgba(214, 209, 199, 0.6);
+    --color-border-strong: #D6D1C7;
+
+    --color-accent-sage: #2D6A4F;
+    --color-accent-sage-soft: #EBF3EE;
+    --color-accent-amber: #9A6B2F;
+    --color-accent-amber-soft: #F9F3EA;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-canvas);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Custom Scrollbar for sleek journal vibe */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 113, 108, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 113, 108, 0.4);
+}
+
+/* Focus styles for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid #2D6A4F;
+  outline-offset: 2px;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile tap target utilities and smooth rendering */
+@layer utilities {
+  .touch-target-accessible {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}

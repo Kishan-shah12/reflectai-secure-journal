@@ -1,0 +1,6 @@
+{
+  "name": "ReflectAI - Authenticated AI Journal & Reflection Companion",
+  "description": "Secure, authenticated journaling and reflection companion powered by Gemini 3.6 Flash and Cloud Firestore with owner-bound data isolation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
